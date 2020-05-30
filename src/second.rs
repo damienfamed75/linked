@@ -12,11 +12,11 @@ type Link<T> = Option<Box<Node<T>>>;
 
 impl<T> List<T> {
     pub fn new() -> Self {
-        List{head: None}
+        List { head: None }
     }
 
     pub fn push(&mut self, elem: T) {
-        let new_node = Box::new(Node{
+        let new_node = Box::new(Node {
             elem: elem,
             // Take the value of head, and replace it with a None value.
             next: self.head.take(),
@@ -37,16 +37,12 @@ impl<T> List<T> {
 
     pub fn peek(&self) -> Option<&T> {
         // map takes by value, so we first take by reference and then map.
-        self.head.as_ref().map(|node| {
-            &node.elem
-        })
+        self.head.as_ref().map(|node| &node.elem)
     }
 
     pub fn peek_mut(&mut self) -> Option<&mut T> {
         // map takes by value, so we first take by reference and then map.
-        self.head.as_mut().map(|node| {
-            &mut node.elem
-        })
+        self.head.as_mut().map(|node| &mut node.elem)
     }
 }
 
@@ -73,21 +69,24 @@ mod test {
     // Mark this function as a testing function.
     #[test]
     fn basic() {
-        
-        { // Given an empty list
+        {
+            // Given an empty list
             let mut l: List<i32> = List::new();
-            { // When popping
+            {
+                // When popping
                 assert_eq!(l.pop(), None);
             }
         }
 
-        { // Given a populate list.
+        {
+            // Given a populate list.
             let mut l = List::new();
             // Populate the list.
             l.push(1);
             l.push(2);
             l.push(3);
-            { // When popping
+            {
+                // When popping
                 assert_eq!(l.pop(), Some(3));
                 assert_eq!(l.pop(), Some(2));
                 assert_eq!(l.pop(), Some(1));

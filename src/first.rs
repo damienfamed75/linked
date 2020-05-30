@@ -11,11 +11,11 @@ pub struct List {
 
 impl List {
     pub fn new() -> Self {
-        List{head: Link::Empty}
+        List { head: Link::Empty }
     }
 
     pub fn push(&mut self, elem: i32) {
-        let new_node = Box::new(Node{
+        let new_node = Box::new(Node {
             elem: elem,
             // this line, replaces the memory stored at self.head
             // and places an empty value for its place.
@@ -66,21 +66,24 @@ mod test {
     // Mark this function as a testing function.
     #[test]
     fn basic() {
-        
-        { // Given an empty list
+        {
+            // Given an empty list
             let mut l = List::new();
-            { // When popping
+            {
+                // When popping
                 assert_eq!(l.pop(), None);
             }
         }
 
-        { // Given a populate list.
+        {
+            // Given a populate list.
             let mut l = List::new();
             // Populate the list.
             l.push(1);
             l.push(2);
             l.push(3);
-            { // When popping
+            {
+                // When popping
                 assert_eq!(l.pop(), Some(3));
                 assert_eq!(l.pop(), Some(2));
                 assert_eq!(l.pop(), Some(1));

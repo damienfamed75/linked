@@ -5,7 +5,6 @@ use first::List;
 
 fn main() {
     let mut l = List::new();
-    
     l.push(0);
     l.push(1);
     l.push(2);
